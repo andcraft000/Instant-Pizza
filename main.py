@@ -7,20 +7,23 @@ def click_to_pizza():
     driver = webdriver.Chrome()
     # driver.implicitly_wait(0.5)
     #Website that is being pulled
-    driver.get("http://bettermotherfuckingwebsite.com/")
+    driver.get("https://mobile.tapin2.co/Location/Index/1238?homeSelection=AllLocations")
+    time.sleep(100)
     driver.implicitly_wait(10)
     try:
-        element = driver.find_element(By.LINK_TEXT, "grotesque pile of shit")
+        element = driver.find_element(By.ID, "location11656")
     except Exception as e:
         print("Could not find element: {e}")
         driver.quit()
         exit()
 
     actions = ActionChains(driver)
+    time.sleep(10)
     driver.implicitly_wait(10)
+    time.sleep(100)
     element.click()
 
-    time.sleep(10)
+    time.sleep(100)
 
 
     assert element is not None
@@ -40,6 +43,16 @@ write_to_pizza()
     # clickable = driver.find_element(By.ID, "click")
     # ActionChains(driver) \
     #     .click(clickable) \
+    #     .perform()
+
+# Pause
+    # clickable = driver.find_element(By.ID, "clickable")
+    # ActionChains(driver)\
+    #     .move_to_element(clickable)\
+    #     .pause(1)\
+    #     .click_and_hold()\
+    #     .pause(1)\
+    #     .send_keys("abc")\
     #     .perform()
 
 # Move to element
