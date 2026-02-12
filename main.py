@@ -3,31 +3,37 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-driver = webdriver.Chrome()
-# driver.implicity_wait(0.5)
-driver.get("https://github.com/andcraft000/Instant-Pizza")
+def click_to_pizza():
+    driver = webdriver.Chrome()
+    # driver.implicitly_wait(0.5)
+    #Website that is being pulled
+    driver.get("http://bettermotherfuckingwebsite.com/")
+    driver.implicitly_wait(10)
+    try:
+        element = driver.find_element(By.LINK_TEXT, "grotesque pile of shit")
+    except Exception as e:
+        print("Could not find element: {e}")
+        driver.quit()
+        exit()
 
-try:
-    element = driver.find_element(By.CLASS_NAME, "react-directory-row-name-cell-small-screen")
-except Exception as e:
-    print("Could not find element: {e}")
+    actions = ActionChains(driver)
+    driver.implicitly_wait(10)
+    element.click()
+
+    time.sleep(10)
+
+
+    assert element is not None
+
     driver.quit()
-    exit()
+    write_to_pizza()
 
-actions = ActionChains(driver)
-element.click
-
-time.sleep(10)
+def write_to_pizza():
+    print("This is an automated test")
 
 
-assert element is not None
-
-driver.quit()
-
-
-def orderpizza():
-    print('Hello!')
-    driver.quit()
+click_to_pizza()
+write_to_pizza()
 
 
 # Click and release
